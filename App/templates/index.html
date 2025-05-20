@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Upload Your Resume</h1>
+    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="email" name="email" placeholder="Your Email" required><br>
+        <input type="text" name="mobile" placeholder="Mobile Number" required><br>
+        <input type="file" name="resume" accept=".pdf" required><br>
+
+        <label for="jobdesc">Paste Job Description:</label><br>
+        <textarea name="jobdesc" rows="5" cols="50" placeholder="Paste the job description here..." required></textarea><br>
+
+        <button type="submit">Analyze Resume</button>
+    </form>
+</body>
+</html>

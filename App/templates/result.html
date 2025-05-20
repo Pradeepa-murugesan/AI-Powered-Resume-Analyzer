@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Resume Analysis Summary</h1>
+
+    <section>
+        <h2>👤 Candidate Info</h2>
+        <p><strong>Name:</strong> {{ resume.name }}</p>
+        <p><strong>Email:</strong> {{ resume.email }}</p>
+        <p><strong>Mobile:</strong> {{ resume.mobile_number }}</p>
+        <p><strong>Role</strong> {{ role }}</p>
+        <p><strong>Pages:</strong> {{ resume.no_of_pages }}</p>
+
+    </section>
+
+    <section>
+        <h2>📊 Prediction</h2>
+        <p><strong>Experience Level:</strong> {{ level }}</p>
+        <p><strong>Recommended Field:</strong> {{ field }}</p>
+    </section>
+
+    <section>
+        <h2>🛠 Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>🎯 Recommended Skills</h2>
+        <ul>
+            {% for skill in recommendations %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>📚 Recommended Courses</h2>
+        <ul>
+            {% for course_name, course_url in courses %}
+                <li><a href="{{ course_url }}" target="_blank">{{ course_name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>✅ Resume Score</h2>
+        <div style="font-size: 24px; font-weight: bold;">{{ score }} / 100</div>
+    </section>
+
+    <section>
+    <h2>🧠 AI Suggestions</h2>
+    <div class="ai-suggestions">
+        {{ gemini_feedback | safe }}
+    </div>
+</section>
+
+
+    <section>
+  <h2>🎥 Resume Tips Video</h2>
+  <iframe width="100%" height="315"
+          src="https://www.youtube.com/embed/{{ resume_vid.split('/')[-1] }}"
+          title="Resume Tips Video" frameborder="0" allowfullscreen>
+  </iframe>
+</section>
+
+<section>
+  <h2>🎤 Interview Tips Video</h2>
+  <iframe width="100%" height="315"
+          src="https://www.youtube.com/embed/{{ interview_vid.split('/')[-1] }}"
+          title="Interview Tips Video" frameborder="0" allowfullscreen>
+  </iframe>
+</section>
+
+
+</body>
+</html>
